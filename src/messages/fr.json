@@ -59,6 +59,251 @@
       }
     }
   },
+  "suppliers": {
+    "list": {
+      "title": "Fournisseurs",
+      "description": "Gérez vos relations fournisseurs et vos contacts d'approvisionnement.",
+      "newSupplier": "Nouveau fournisseur",
+      "importFromExcel": "Importer depuis Excel",
+      "exportToCsv": "Exporter en CSV",
+      "columns": {
+        "name": "Nom",
+        "country": "Pays",
+        "category": "Catégorie",
+        "rating": "Note",
+        "riskScore": "Risque",
+        "lastOrder": "Dernière commande",
+        "status": "Statut"
+      },
+      "filters": {
+        "search": "Rechercher des fournisseurs…",
+        "country": "Pays",
+        "category": "Catégorie",
+        "status": "Statut",
+        "ratingRange": "Plage de note",
+        "riskRange": "Plage de risque",
+        "clear": "Effacer les filtres"
+      },
+      "bulk": {
+        "selected": "{count} sélectionné(s)",
+        "archive": "Archiver",
+        "export": "Exporter",
+        "deselect": "Tout désélectionner"
+      },
+      "pagination": {
+        "showing": "{from}–{to} sur {total} fournisseurs",
+        "prev": "Précédent",
+        "next": "Suivant"
+      },
+      "empty": {
+        "title": "Aucun fournisseur pour l'instant",
+        "description": "Ajoutez votre premier fournisseur pour commencer à gérer vos relations d'approvisionnement.",
+        "cta": "Ajouter un fournisseur"
+      },
+      "emptyFiltered": {
+        "title": "Aucun fournisseur ne correspond à vos filtres",
+        "description": "Essayez d'ajuster ou d'effacer vos filtres.",
+        "cta": "Effacer les filtres"
+      }
+    },
+    "detail": {
+      "tabs": {
+        "overview": "Aperçu",
+        "products": "Produits",
+        "documents": "Documents",
+        "orders": "Commandes",
+        "quality": "Qualité",
+        "notes": "Notes & Activité",
+        "intelligence": "Intelligence IA"
+      },
+      "overview": {
+        "stats": {
+          "totalOrders": "Commandes totales",
+          "totalSpend": "Dépenses totales",
+          "qcPassRate": "Taux de conformité QC",
+          "defectRate": "Taux de défauts"
+        },
+        "contacts": "Contacts clés",
+        "recentActivity": "Activité récente"
+      },
+      "products": {
+        "title": "Produits",
+        "add": "Ajouter un produit",
+        "empty": {
+          "title": "Aucun produit référencé",
+          "description": "Ajoutez des produits de ce fournisseur pour suivre les prix et délais."
+        },
+        "columns": {
+          "name": "Produit",
+          "sku": "SKU",
+          "moq": "MOQ",
+          "unitPrice": "Prix unitaire",
+          "leadTime": "Délai",
+          "actions": ""
+        }
+      },
+      "documents": {
+        "title": "Documents",
+        "upload": "Téléverser un document",
+        "dropHere": "Déposez vos fichiers ici ou cliquez pour téléverser",
+        "empty": {
+          "title": "Aucun document",
+          "description": "Téléversez des catalogues, certifications ou photos de ce fournisseur."
+        },
+        "types": {
+          "CATALOG": "Catalogue",
+          "CERTIFICATE": "Certificat",
+          "PHOTO": "Photo",
+          "OTHER": "Autre"
+        }
+      },
+      "orders": {
+        "title": "Commandes",
+        "empty": {
+          "title": "Aucune commande pour l'instant",
+          "description": "Les commandes passées auprès de ce fournisseur apparaîtront ici."
+        }
+      },
+      "quality": {
+        "title": "Rapports qualité",
+        "passRate": "Taux de conformité QC dans le temps",
+        "empty": {
+          "title": "Aucun contrôle qualité",
+          "description": "Les résultats des inspections qualité de ce fournisseur apparaîtront ici."
+        }
+      },
+      "notes": {
+        "title": "Notes & Activité",
+        "addNote": "Ajouter une note",
+        "placeholder": "Rédigez une note, journalisez un appel, enregistrez une réunion…",
+        "interactionTypes": {
+          "EMAIL": "E-mail",
+          "CALL": "Appel",
+          "MEETING": "Réunion",
+          "SAMPLE": "Échantillon",
+          "QC": "Visite QC"
+        },
+        "empty": {
+          "title": "Aucune activité pour l'instant",
+          "description": "Enregistrez vos e-mails, appels et réunions avec ce fournisseur."
+        }
+      },
+      "intelligence": {
+        "title": "Intelligence IA",
+        "runAnalysis": "Lancer une nouvelle analyse",
+        "lastAnalysis": "Dernière analyse",
+        "scores": {
+          "risk": "Score de risque",
+          "credibility": "Crédibilité",
+          "quality": "Signal qualité"
+        },
+        "redFlags": "Points d'alerte",
+        "opportunities": "Opportunités",
+        "noReport": {
+          "title": "Aucun rapport d'intelligence",
+          "description": "Lancez une analyse IA pour obtenir des scores de risque et des opportunités sur ce fournisseur."
+        }
+      }
+    },
+    "form": {
+      "create": {
+        "title": "Nouveau fournisseur"
+      },
+      "edit": {
+        "title": "Modifier le fournisseur"
+      },
+      "steps": {
+        "1": "Informations société",
+        "2": "Contacts",
+        "3": "Produits"
+      },
+      "fields": {
+        "name": "Nom de la société",
+        "namePlaceholder": "Shenzhen Electronics Co.",
+        "country": "Pays",
+        "city": "Ville",
+        "cityPlaceholder": "Shenzhen",
+        "websiteUrl": "Site web",
+        "websitePlaceholder": "https://",
+        "alibabaUrl": "Boutique Alibaba",
+        "the1688Url": "Boutique 1688",
+        "mainCategory": "Catégorie principale",
+        "yearEstablished": "Année de création",
+        "employeeCount": "Nombre d'employés",
+        "certifications": "Certifications",
+        "certificationsPlaceholder": "ISO 9001, CE, RoHS…",
+        "notes": "Notes internes",
+        "contactName": "Nom du contact",
+        "contactRole": "Poste / titre",
+        "contactEmail": "E-mail",
+        "contactPhone": "Téléphone",
+        "contactWechat": "WeChat ID",
+        "contactWhatsapp": "WhatsApp",
+        "isPrimary": "Contact principal",
+        "productName": "Nom du produit",
+        "productSku": "SKU",
+        "moq": "MOQ (unités)",
+        "unitPrice": "Prix unitaire (centimes)",
+        "currency": "Devise",
+        "leadTimeDays": "Délai de livraison (jours)"
+      },
+      "actions": {
+        "prev": "Précédent",
+        "next": "Suivant",
+        "save": "Enregistrer le fournisseur",
+        "saving": "Enregistrement…",
+        "cancel": "Annuler",
+        "addContact": "Ajouter un contact",
+        "removeContact": "Supprimer le contact",
+        "addProduct": "Ajouter un produit",
+        "removeProduct": "Supprimer le produit"
+      },
+      "success": {
+        "created": "Fournisseur créé avec succès",
+        "updated": "Fournisseur mis à jour avec succès"
+      },
+      "errors": {
+        "generic": "Une erreur est survenue. Veuillez réessayer."
+      }
+    },
+    "import": {
+      "title": "Importer depuis Excel",
+      "description": "Téléversez un fichier .xlsx pour importer des fournisseurs en masse. Colonnes requises : name, country.",
+      "step1": {
+        "title": "Téléverser un fichier",
+        "dropzone": "Déposez votre fichier .xlsx ici ou cliquez pour téléverser",
+        "accepts": "Accepte les fichiers .xlsx et .xls"
+      },
+      "step2": {
+        "title": "Mapper les colonnes",
+        "description": "Associez les colonnes de votre fichier aux champs fournisseur."
+      },
+      "step3": {
+        "title": "Aperçu & import",
+        "validRows": "{count} lignes valides prêtes à importer",
+        "invalidRows": "{count} lignes avec des erreurs (ignorées)",
+        "import": "Importer {count} fournisseurs",
+        "importing": "Importation…"
+      },
+      "success": "{count} fournisseur(s) importé(s) avec succès",
+      "errors": {
+        "noFile": "Veuillez sélectionner un fichier",
+        "invalidFormat": "Format invalide — veuillez téléverser un fichier .xlsx.",
+        "noData": "Aucune donnée trouvée dans le fichier.",
+        "generic": "L'importation a échoué. Veuillez réessayer."
+      }
+    },
+    "status": {
+      "ACTIVE": "Actif",
+      "ARCHIVED": "Archivé",
+      "BLACKLISTED": "Blacklisté"
+    },
+    "riskLevels": {
+      "low": "Risque faible",
+      "medium": "Risque moyen",
+      "high": "Risque élevé"
+    }
+  },
   "shell": {
     "nav": {
       "dashboard": "Tableau de bord",

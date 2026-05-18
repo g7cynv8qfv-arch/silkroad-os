@@ -59,6 +59,251 @@
       }
     }
   },
+  "suppliers": {
+    "list": {
+      "title": "Suppliers",
+      "description": "Manage your supplier relationships and sourcing contacts.",
+      "newSupplier": "New supplier",
+      "importFromExcel": "Import from Excel",
+      "exportToCsv": "Export to CSV",
+      "columns": {
+        "name": "Name",
+        "country": "Country",
+        "category": "Category",
+        "rating": "Rating",
+        "riskScore": "Risk",
+        "lastOrder": "Last order",
+        "status": "Status"
+      },
+      "filters": {
+        "search": "Search suppliers…",
+        "country": "Country",
+        "category": "Category",
+        "status": "Status",
+        "ratingRange": "Rating range",
+        "riskRange": "Risk range",
+        "clear": "Clear filters"
+      },
+      "bulk": {
+        "selected": "{count} selected",
+        "archive": "Archive",
+        "export": "Export",
+        "deselect": "Deselect all"
+      },
+      "pagination": {
+        "showing": "Showing {from}–{to} of {total} suppliers",
+        "prev": "Previous",
+        "next": "Next"
+      },
+      "empty": {
+        "title": "No suppliers yet",
+        "description": "Add your first supplier to start managing your sourcing relationships.",
+        "cta": "Add supplier"
+      },
+      "emptyFiltered": {
+        "title": "No suppliers match your filters",
+        "description": "Try adjusting or clearing your filters.",
+        "cta": "Clear filters"
+      }
+    },
+    "detail": {
+      "tabs": {
+        "overview": "Overview",
+        "products": "Products",
+        "documents": "Documents",
+        "orders": "Orders",
+        "quality": "Quality",
+        "notes": "Notes & Activity",
+        "intelligence": "AI Intelligence"
+      },
+      "overview": {
+        "stats": {
+          "totalOrders": "Total orders",
+          "totalSpend": "Total spend",
+          "qcPassRate": "QC pass rate",
+          "defectRate": "Defect rate"
+        },
+        "contacts": "Key contacts",
+        "recentActivity": "Recent activity"
+      },
+      "products": {
+        "title": "Products",
+        "add": "Add product",
+        "empty": {
+          "title": "No products listed",
+          "description": "Add products from this supplier to track pricing and lead times."
+        },
+        "columns": {
+          "name": "Product",
+          "sku": "SKU",
+          "moq": "MOQ",
+          "unitPrice": "Unit price",
+          "leadTime": "Lead time",
+          "actions": ""
+        }
+      },
+      "documents": {
+        "title": "Documents",
+        "upload": "Upload document",
+        "dropHere": "Drop files here or click to upload",
+        "empty": {
+          "title": "No documents",
+          "description": "Upload catalogs, certificates, or photos from this supplier."
+        },
+        "types": {
+          "CATALOG": "Catalog",
+          "CERTIFICATE": "Certificate",
+          "PHOTO": "Photo",
+          "OTHER": "Other"
+        }
+      },
+      "orders": {
+        "title": "Orders",
+        "empty": {
+          "title": "No orders yet",
+          "description": "Orders placed with this supplier will appear here."
+        }
+      },
+      "quality": {
+        "title": "Quality reports",
+        "passRate": "QC pass rate over time",
+        "empty": {
+          "title": "No quality checks",
+          "description": "Quality inspection results for this supplier will appear here."
+        }
+      },
+      "notes": {
+        "title": "Notes & Activity",
+        "addNote": "Add note",
+        "placeholder": "Write a note, log a call, record a meeting…",
+        "interactionTypes": {
+          "EMAIL": "Email",
+          "CALL": "Call",
+          "MEETING": "Meeting",
+          "SAMPLE": "Sample",
+          "QC": "QC visit"
+        },
+        "empty": {
+          "title": "No activity yet",
+          "description": "Log emails, calls, and meetings with this supplier."
+        }
+      },
+      "intelligence": {
+        "title": "AI Intelligence",
+        "runAnalysis": "Run new analysis",
+        "lastAnalysis": "Last analysis",
+        "scores": {
+          "risk": "Risk score",
+          "credibility": "Credibility",
+          "quality": "Quality signal"
+        },
+        "redFlags": "Red flags",
+        "opportunities": "Opportunities",
+        "noReport": {
+          "title": "No intelligence report",
+          "description": "Run an AI analysis to get risk scores, red flags, and opportunities for this supplier."
+        }
+      }
+    },
+    "form": {
+      "create": {
+        "title": "New supplier"
+      },
+      "edit": {
+        "title": "Edit supplier"
+      },
+      "steps": {
+        "1": "Company info",
+        "2": "Contacts",
+        "3": "Products"
+      },
+      "fields": {
+        "name": "Company name",
+        "namePlaceholder": "Shenzhen Electronics Co.",
+        "country": "Country",
+        "city": "City",
+        "cityPlaceholder": "Shenzhen",
+        "websiteUrl": "Website",
+        "websitePlaceholder": "https://",
+        "alibabaUrl": "Alibaba store URL",
+        "the1688Url": "1688 store URL",
+        "mainCategory": "Main category",
+        "yearEstablished": "Year established",
+        "employeeCount": "Employee count",
+        "certifications": "Certifications",
+        "certificationsPlaceholder": "ISO 9001, CE, RoHS…",
+        "notes": "Internal notes",
+        "contactName": "Contact name",
+        "contactRole": "Role / title",
+        "contactEmail": "Email",
+        "contactPhone": "Phone",
+        "contactWechat": "WeChat ID",
+        "contactWhatsapp": "WhatsApp",
+        "isPrimary": "Primary contact",
+        "productName": "Product name",
+        "productSku": "SKU",
+        "moq": "MOQ (units)",
+        "unitPrice": "Unit price (cents)",
+        "currency": "Currency",
+        "leadTimeDays": "Lead time (days)"
+      },
+      "actions": {
+        "prev": "Previous",
+        "next": "Next",
+        "save": "Save supplier",
+        "saving": "Saving…",
+        "cancel": "Cancel",
+        "addContact": "Add contact",
+        "removeContact": "Remove contact",
+        "addProduct": "Add product",
+        "removeProduct": "Remove product"
+      },
+      "success": {
+        "created": "Supplier created successfully",
+        "updated": "Supplier updated successfully"
+      },
+      "errors": {
+        "generic": "Something went wrong. Please try again."
+      }
+    },
+    "import": {
+      "title": "Import from Excel",
+      "description": "Upload an .xlsx file to bulk-import suppliers. Required columns: name, country.",
+      "step1": {
+        "title": "Upload file",
+        "dropzone": "Drop your .xlsx file here or click to upload",
+        "accepts": "Accepts .xlsx and .xls files"
+      },
+      "step2": {
+        "title": "Map columns",
+        "description": "Match your file's columns to supplier fields."
+      },
+      "step3": {
+        "title": "Preview & import",
+        "validRows": "{count} valid rows ready to import",
+        "invalidRows": "{count} rows with errors (will be skipped)",
+        "import": "Import {count} suppliers",
+        "importing": "Importing…"
+      },
+      "success": "{count} supplier(s) imported successfully",
+      "errors": {
+        "noFile": "Please select a file",
+        "invalidFormat": "Invalid format — please upload an .xlsx file.",
+        "noData": "No data found in the file.",
+        "generic": "Import failed. Please try again."
+      }
+    },
+    "status": {
+      "ACTIVE": "Active",
+      "ARCHIVED": "Archived",
+      "BLACKLISTED": "Blacklisted"
+    },
+    "riskLevels": {
+      "low": "Low risk",
+      "medium": "Medium risk",
+      "high": "High risk"
+    }
+  },
   "shell": {
     "nav": {
       "dashboard": "Dashboard",
