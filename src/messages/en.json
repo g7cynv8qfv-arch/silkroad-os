@@ -1,0 +1,115 @@
+{
+  "app": {
+    "name": "SilkRoute OS",
+    "tagline": "Your AI-powered sourcing operating system"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Welcome back",
+      "subtitle": "Sign in to your account",
+      "emailLabel": "Email address",
+      "emailPlaceholder": "you@company.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "••••••••",
+      "submitButton": "Sign in",
+      "noAccount": "Don't have an account?",
+      "signUpLink": "Create one",
+      "forgotPassword": "Forgot password?",
+      "errors": {
+        "invalidCredentials": "Incorrect email or password.",
+        "tooManyAttempts": "Too many attempts. Please try again later.",
+        "generic": "Something went wrong. Please try again."
+      }
+    },
+    "signUp": {
+      "title": "Create an account",
+      "subtitle": "Start your free trial",
+      "firstNameLabel": "First name",
+      "firstNamePlaceholder": "John",
+      "lastNameLabel": "Last name",
+      "lastNamePlaceholder": "Smith",
+      "emailLabel": "Work email",
+      "emailPlaceholder": "you@company.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "8 characters minimum",
+      "submitButton": "Create account",
+      "hasAccount": "Already have an account?",
+      "signInLink": "Sign in",
+      "verifyTitle": "Check your email",
+      "verifySubtitle": "Enter the 6-digit code sent to {email}",
+      "codeLabel": "Verification code",
+      "codePlaceholder": "000000",
+      "verifyButton": "Verify",
+      "resendCode": "Resend code",
+      "errors": {
+        "emailTaken": "This email is already in use.",
+        "weakPassword": "Password is too weak.",
+        "invalidCode": "Invalid or expired code.",
+        "generic": "Something went wrong. Please try again."
+      }
+    },
+    "onboarding": {
+      "title": "Create your organization",
+      "subtitle": "Almost there! Set up your workspace.",
+      "orgNameLabel": "Organization name",
+      "orgNamePlaceholder": "Acme Import & Export",
+      "submitButton": "Create organization",
+      "errors": {
+        "generic": "Could not create organization. Please try again."
+      }
+    }
+  },
+  "shell": {
+    "nav": {
+      "dashboard": "Dashboard",
+      "suppliers": "Suppliers",
+      "intelligence": "AI Intelligence",
+      "orders": "Orders",
+      "invoices": "Invoices",
+      "analytics": "Analytics",
+      "settings": "Settings",
+      "help": "Help"
+    },
+    "topbar": {
+      "openSearch": "Search",
+      "notifications": "Notifications",
+      "noNotifications": "No notifications yet.",
+      "toggleSidebar": "Toggle sidebar",
+      "openMenu": "Open menu"
+    },
+    "commandPalette": {
+      "placeholder": "Search commands…",
+      "navigation": "Navigation",
+      "actions": "Quick actions",
+      "noResults": "No results found.",
+      "createSupplier": "Create supplier",
+      "createOrder": "Create order",
+      "createInvoice": "Create invoice"
+    },
+    "locale": {
+      "switchTo": "Passer en Français",
+      "label": "Language"
+    },
+    "userMenu": {
+      "profile": "Profile",
+      "settings": "Settings",
+      "signOut": "Sign out"
+    },
+    "breadcrumbs": {
+      "dashboard": "Dashboard",
+      "suppliers": "Suppliers",
+      "intelligence": "AI Intelligence",
+      "orders": "Orders",
+      "invoices": "Invoices",
+      "analytics": "Analytics",
+      "settings": "Settings",
+      "new": "New",
+      "edit": "Edit"
+    },
+    "theme": {
+      "light": "Light theme",
+      "dark": "Dark theme",
+      "system": "System theme"
+    }
+  }
+}

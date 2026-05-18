@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm install *)",
+      "Bash(npm install *)",
+      "Bash(npm root *)",
+      "Bash(export PATH=\"$PATH:$\\(npm root -g\\)/.bin\")",
+      "Bash(pnpm --version)",
+      "Bash(git init *)",
+      "Bash(pnpm approve-builds *)",
+      "Bash(pnpm typecheck *)",
+      "Bash(pnpm lint *)",
+      "Bash(curl -sL http://localhost:3002/ -o /dev/null -w \"/ → %{http_code}\\\\n\")",
+      "Bash(curl -sL http://localhost:3002/fr -o /dev/null -w \"fr → %{http_code}\\\\n\")",
+      "Bash(curl -sL http://localhost:3002/en -o /dev/null -w \"en → %{http_code}\\\\n\")",
+      "Bash(curl -s http://localhost:3002/fr)",
+      "Bash(curl -s \"http://localhost:3002/fr\" -i)",
+      "Bash(curl -s http://localhost:3002/fr -i)",
+      "Bash(curl -s http://localhost:3002/en)",
+      "Bash(kill 99629)",
+      "Bash(pnpm test *)",
+      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\(Object.keys\\({...p.dependencies,...p.devDependencies}\\).filter\\(k=>k.startsWith\\('@radix'\\)\\).join\\('\\\\n'\\)\\)\")",
+      "Bash(pnpm add *)",
+      "Bash(pnpm db:generate)",
+      "Bash(DATABASE_URL=\"postgresql://neondb_owner:npg_IZHVF5Xsc3BL@ep-cool-band-alo1n306.c-3.eu-central-1.aws.neon.tech/neondb?sslmode=require\" pnpm prisma migrate dev --name init)",
+      "Bash(DATABASE_URL=\"postgresql://neondb_owner:npg_IZHVF5Xsc3BL@ep-cool-band-alo1n306.c-3.eu-central-1.aws.neon.tech/neondb?sslmode=require\" pnpm db:seed)",
+      "Bash(DATABASE_URL=\"postgresql://neondb_owner:npg_IZHVF5Xsc3BL@ep-cool-band-alo1n306.c-3.eu-central-1.aws.neon.tech/neondb?sslmode=require\" node --input-type=module)"
+    ]
+  }
+}

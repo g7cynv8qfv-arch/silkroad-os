@@ -1,0 +1,115 @@
+{
+  "app": {
+    "name": "SilkRoute OS",
+    "tagline": "Votre système d'exploitation d'approvisionnement IA"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Bienvenue",
+      "subtitle": "Connectez-vous à votre compte",
+      "emailLabel": "Adresse e-mail",
+      "emailPlaceholder": "vous@entreprise.com",
+      "passwordLabel": "Mot de passe",
+      "passwordPlaceholder": "••••••••",
+      "submitButton": "Se connecter",
+      "noAccount": "Pas encore de compte ?",
+      "signUpLink": "Créer un compte",
+      "forgotPassword": "Mot de passe oublié ?",
+      "errors": {
+        "invalidCredentials": "E-mail ou mot de passe incorrect.",
+        "tooManyAttempts": "Trop de tentatives. Veuillez réessayer plus tard.",
+        "generic": "Une erreur est survenue. Veuillez réessayer."
+      }
+    },
+    "signUp": {
+      "title": "Créer un compte",
+      "subtitle": "Commencez votre essai gratuit",
+      "firstNameLabel": "Prénom",
+      "firstNamePlaceholder": "Jean",
+      "lastNameLabel": "Nom",
+      "lastNamePlaceholder": "Dupont",
+      "emailLabel": "Adresse e-mail professionnelle",
+      "emailPlaceholder": "vous@entreprise.com",
+      "passwordLabel": "Mot de passe",
+      "passwordPlaceholder": "8 caractères minimum",
+      "submitButton": "Créer mon compte",
+      "hasAccount": "Déjà un compte ?",
+      "signInLink": "Se connecter",
+      "verifyTitle": "Vérifiez votre e-mail",
+      "verifySubtitle": "Entrez le code à 6 chiffres envoyé à {email}",
+      "codeLabel": "Code de vérification",
+      "codePlaceholder": "000000",
+      "verifyButton": "Vérifier",
+      "resendCode": "Renvoyer le code",
+      "errors": {
+        "emailTaken": "Cette adresse e-mail est déjà utilisée.",
+        "weakPassword": "Le mot de passe est trop faible.",
+        "invalidCode": "Code invalide ou expiré.",
+        "generic": "Une erreur est survenue. Veuillez réessayer."
+      }
+    },
+    "onboarding": {
+      "title": "Créez votre organisation",
+      "subtitle": "Vous y êtes presque ! Configurez votre espace de travail.",
+      "orgNameLabel": "Nom de l'organisation",
+      "orgNamePlaceholder": "Acme Import & Export",
+      "submitButton": "Créer l'organisation",
+      "errors": {
+        "generic": "Impossible de créer l'organisation. Veuillez réessayer."
+      }
+    }
+  },
+  "shell": {
+    "nav": {
+      "dashboard": "Tableau de bord",
+      "suppliers": "Fournisseurs",
+      "intelligence": "Intelligence IA",
+      "orders": "Commandes",
+      "invoices": "Factures",
+      "analytics": "Analytiques",
+      "settings": "Paramètres",
+      "help": "Aide"
+    },
+    "topbar": {
+      "openSearch": "Rechercher",
+      "notifications": "Notifications",
+      "noNotifications": "Aucune notification pour l'instant.",
+      "toggleSidebar": "Afficher/masquer la barre latérale",
+      "openMenu": "Ouvrir le menu"
+    },
+    "commandPalette": {
+      "placeholder": "Rechercher des commandes…",
+      "navigation": "Navigation",
+      "actions": "Actions rapides",
+      "noResults": "Aucun résultat.",
+      "createSupplier": "Créer un fournisseur",
+      "createOrder": "Créer une commande",
+      "createInvoice": "Créer une facture"
+    },
+    "locale": {
+      "switchTo": "Switch to English",
+      "label": "Langue"
+    },
+    "userMenu": {
+      "profile": "Mon profil",
+      "settings": "Paramètres",
+      "signOut": "Se déconnecter"
+    },
+    "breadcrumbs": {
+      "dashboard": "Tableau de bord",
+      "suppliers": "Fournisseurs",
+      "intelligence": "Intelligence IA",
+      "orders": "Commandes",
+      "invoices": "Factures",
+      "analytics": "Analytiques",
+      "settings": "Paramètres",
+      "new": "Nouveau",
+      "edit": "Modifier"
+    },
+    "theme": {
+      "light": "Thème clair",
+      "dark": "Thème sombre",
+      "system": "Thème système"
+    }
+  }
+}

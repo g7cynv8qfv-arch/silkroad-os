@@ -1,0 +1,499 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL")
+}
+
+// ─── Enums ────────────────────────────────────────────────────────────────────
+
+enum Plan {
+  FREE
+  PRO
+  ENTERPRISE
+}
+
+enum MemberRole {
+  OWNER
+  ADMIN
+  MEMBER
+  VIEWER
+}
+
+enum SupplierStatus {
+  ACTIVE
+  ARCHIVED
+  BLACKLISTED
+}
+
+enum AttachmentType {
+  CATALOG
+  CERTIFICATE
+  PHOTO
+  OTHER
+}
+
+enum InteractionType {
+  EMAIL
+  CALL
+  MEETING
+  SAMPLE
+  QC
+}
+
+enum OrderStatus {
+  QUOTED
+  CONFIRMED
+  IN_PRODUCTION
+  QC
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+enum ShipmentMode {
+  AIR
+  SEA
+  RAIL
+  ROAD
+}
+
+enum InvoiceType {
+  PROFORMA
+  COMMERCIAL
+  CREDIT_NOTE
+}
+
+enum InvoiceStatus {
+  DRAFT
+  SENT
+  PAID
+  OVERDUE
+  CANCELLED
+}
+
+enum SourceType {
+  URL
+  PDF
+  IMAGE
+  MANUAL
+}
+
+enum MessageRole {
+  USER
+  ASSISTANT
+}
+
+enum PaymentMethod {
+  WIRE_TRANSFER
+  PAYPAL
+  CREDIT_CARD
+  CRYPTO
+  OTHER
+}
+
+// ─── Identity & Tenancy ───────────────────────────────────────────────────────
+
+model Organization {
+  id         String   @id @default(cuid())
+  clerkOrgId String   @unique
+  name       String
+  slug       String   @unique
+  plan       Plan     @default(FREE)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  memberships         Membership[]
+  suppliers           Supplier[]
+  orders              Order[]
+  clients             Client[]
+  invoices            Invoice[]
+  intelligenceReports IntelligenceReport[]
+  activityLogs        ActivityLog[]
+  aiConversations     AiAssistantConversation[]
+}
+
+model User {
+  id          String   @id @default(cuid())
+  clerkUserId String   @unique
+  email       String   @unique
+  firstName   String?
+  lastName    String?
+  avatarUrl   String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  memberships          Membership[]
+  supplierAttachments  SupplierAttachment[]
+  supplierInteractions SupplierInteraction[]
+  intelligenceReports  IntelligenceReport[]
+  activityLogs         ActivityLog[]
+  aiConversations      AiAssistantConversation[]
+}
+
+model Membership {
+  userId         String
+  organizationId String
+  role           MemberRole @default(MEMBER)
+  createdAt      DateTime   @default(now())
+
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@id([userId, organizationId])
+  @@index([organizationId])
+}
+
+// ─── Suppliers ────────────────────────────────────────────────────────────────
+
+model Supplier {
+  id              String         @id @default(cuid())
+  organizationId  String
+  organization    Organization   @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  name            String
+  country         String         @default("CN")
+  city            String?
+  websiteUrl      String?
+  alibabaUrl      String?
+  the1688Url      String?
+  mainCategory    String?
+  yearEstablished Int?
+  employeeCount   Int?
+  certifications  String[]       @default([])
+  rating          Float?
+  riskScore       Float?
+  status          SupplierStatus @default(ACTIVE)
+  notes           String?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  contacts            SupplierContact[]
+  products            SupplierProduct[]
+  attachments         SupplierAttachment[]
+  interactions        SupplierInteraction[]
+  orders              Order[]
+  intelligenceReports IntelligenceReport[]
+
+  @@index([organizationId])
+  @@index([organizationId, status])
+}
+
+model SupplierContact {
+  id             String   @id @default(cuid())
+  organizationId String
+  supplierId     String
+  supplier       Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+  name           String
+  role           String?
+  email          String?
+  phone          String?
+  wechat         String?
+  whatsapp       String?
+  isPrimary      Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([organizationId])
+  @@index([supplierId])
+}
+
+model SupplierProduct {
+  id             String   @id @default(cuid())
+  organizationId String
+  supplierId     String
+  supplier       Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+  name           String
+  sku            String?
+  moq            Int?
+  unitPriceCents Int?
+  currency       String   @default("USD")
+  leadTimeDays   Int?
+  images         String[] @default([])
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([organizationId])
+  @@index([supplierId])
+}
+
+model SupplierAttachment {
+  id             String         @id @default(cuid())
+  organizationId String
+  supplierId     String
+  supplier       Supplier       @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+  uploadedById   String?
+  uploadedBy     User?          @relation(fields: [uploadedById], references: [id], onDelete: SetNull)
+  type           AttachmentType @default(OTHER)
+  url            String
+  filename       String
+  sizeBytes      Int
+  createdAt      DateTime       @default(now())
+
+  @@index([organizationId])
+  @@index([supplierId])
+}
+
+model SupplierInteraction {
+  id             String          @id @default(cuid())
+  organizationId String
+  supplierId     String
+  supplier       Supplier        @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+  createdById    String?
+  createdBy      User?           @relation(fields: [createdById], references: [id], onDelete: SetNull)
+  type           InteractionType
+  summary        String
+  occurredAt     DateTime
+  createdAt      DateTime        @default(now())
+
+  @@index([organizationId])
+  @@index([supplierId])
+}
+
+// ─── AI Intelligence ──────────────────────────────────────────────────────────
+
+model IntelligenceReport {
+  id               String       @id @default(cuid())
+  organizationId   String
+  organization     Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  supplierId       String?
+  supplier         Supplier?    @relation(fields: [supplierId], references: [id], onDelete: SetNull)
+  createdById      String?
+  createdBy        User?        @relation(fields: [createdById], references: [id], onDelete: SetNull)
+  sourceType       SourceType
+  sourceRef        String
+  riskScore        Float
+  credibilityScore Float
+  qualitySignal    Float
+  summary          String
+  redFlags         Json         @default("[]")
+  opportunities    Json         @default("[]")
+  rawAnalysis      Json         @default("{}")
+  model            String
+  tokensUsed       Int
+  createdAt        DateTime     @default(now())
+
+  @@index([organizationId])
+  @@index([organizationId, supplierId])
+}
+
+// ─── Orders & Logistics ───────────────────────────────────────────────────────
+
+model Order {
+  id                 String       @id @default(cuid())
+  organizationId     String
+  organization       Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  supplierId         String?
+  supplier           Supplier?    @relation(fields: [supplierId], references: [id], onDelete: SetNull)
+  orderNumber        String
+  status             OrderStatus  @default(QUOTED)
+  totalCents         Int          @default(0)
+  currency           String       @default("USD")
+  marginCents        Int?
+  expectedDeliveryAt DateTime?
+  deliveredAt        DateTime?
+  notes              String?
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+
+  items         OrderItem[]
+  shipments     Shipment[]
+  qualityChecks QualityCheck[]
+  invoices      Invoice[]
+
+  @@unique([organizationId, orderNumber])
+  @@index([organizationId])
+  @@index([organizationId, status])
+  @@index([supplierId])
+}
+
+model OrderItem {
+  id             String   @id @default(cuid())
+  organizationId String
+  orderId        String
+  order          Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productName    String
+  sku            String?
+  quantity       Int
+  unitPriceCents Int
+  totalCents     Int
+  createdAt      DateTime @default(now())
+
+  @@index([organizationId])
+  @@index([orderId])
+}
+
+model Shipment {
+  id                   String       @id @default(cuid())
+  organizationId       String
+  orderId              String
+  order                Order        @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  carrier              String?
+  trackingNumber       String?
+  mode                 ShipmentMode @default(SEA)
+  etd                  DateTime?
+  eta                  DateTime?
+  deliveredAt          DateTime?
+  status               String?
+  lastEventAt          DateTime?
+  lastEventDescription String?
+  createdAt            DateTime     @default(now())
+  updatedAt            DateTime     @updatedAt
+
+  @@index([organizationId])
+  @@index([orderId])
+}
+
+model QualityCheck {
+  id             String   @id @default(cuid())
+  organizationId String
+  orderId        String
+  order          Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  performedAt    DateTime
+  inspector      String?
+  passed         Boolean
+  defectsFound   Int      @default(0)
+  reportUrl      String?
+  notes          String?
+  createdAt      DateTime @default(now())
+
+  @@index([organizationId])
+  @@index([orderId])
+}
+
+// ─── Finance ──────────────────────────────────────────────────────────────────
+
+model Client {
+  id             String       @id @default(cuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  name           String
+  email          String?
+  taxId          String?
+  addressLine1   String?
+  addressLine2   String?
+  city           String?
+  postalCode     String?
+  country        String       @default("FR")
+  notes          String?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  invoices Invoice[]
+
+  @@index([organizationId])
+}
+
+model Invoice {
+  id             String        @id @default(cuid())
+  organizationId String
+  organization   Organization  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  orderId        String?
+  order          Order?        @relation(fields: [orderId], references: [id], onDelete: SetNull)
+  clientId       String
+  client         Client        @relation(fields: [clientId], references: [id], onDelete: Restrict)
+  invoiceNumber  String
+  type           InvoiceType   @default(COMMERCIAL)
+  status         InvoiceStatus @default(DRAFT)
+  issueDate      DateTime      @default(now())
+  dueDate        DateTime?
+  currency       String        @default("USD")
+  subtotalCents  Int           @default(0)
+  taxCents       Int           @default(0)
+  totalCents     Int           @default(0)
+  paidCents      Int           @default(0)
+  pdfUrl         String?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  items    InvoiceItem[]
+  payments Payment[]
+
+  @@unique([organizationId, invoiceNumber])
+  @@index([organizationId])
+  @@index([organizationId, status])
+  @@index([orderId])
+  @@index([clientId])
+}
+
+model InvoiceItem {
+  id             String   @id @default(cuid())
+  organizationId String
+  invoiceId      String
+  invoice        Invoice  @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  description    String
+  quantity       Int      @default(1)
+  unitPriceCents Int
+  totalCents     Int
+  createdAt      DateTime @default(now())
+
+  @@index([organizationId])
+  @@index([invoiceId])
+}
+
+model Payment {
+  id             String        @id @default(cuid())
+  organizationId String
+  invoiceId      String
+  invoice        Invoice       @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  amountCents    Int
+  currency       String        @default("USD")
+  method         PaymentMethod @default(WIRE_TRANSFER)
+  paidAt         DateTime
+  reference      String?
+  createdAt      DateTime      @default(now())
+
+  @@index([organizationId])
+  @@index([invoiceId])
+}
+
+// ─── Audit & AI Assistant ─────────────────────────────────────────────────────
+
+model ActivityLog {
+  id             String       @id @default(cuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  userId         String?
+  user           User?        @relation(fields: [userId], references: [id], onDelete: SetNull)
+  action         String
+  entityType     String
+  entityId       String
+  metadata       Json         @default("{}")
+  createdAt      DateTime     @default(now())
+
+  @@index([organizationId])
+  @@index([organizationId, entityType, entityId])
+}
+
+model AiAssistantConversation {
+  id             String       @id @default(cuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  userId         String?
+  user           User?        @relation(fields: [userId], references: [id], onDelete: SetNull)
+  title          String
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  messages AiAssistantMessage[]
+
+  @@index([organizationId])
+  @@index([organizationId, userId])
+}
+
+model AiAssistantMessage {
+  id             String                  @id @default(cuid())
+  organizationId String
+  conversationId String
+  conversation   AiAssistantConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  role           MessageRole
+  content        String
+  toolCalls      Json?
+  tokensUsed     Int?
+  createdAt      DateTime                @default(now())
+
+  @@index([organizationId])
+  @@index([conversationId])
+}

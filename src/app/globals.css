@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design tokens ──────────────────────────────────────────────────────────── */
+@layer base {
+  :root {
+    /* Backgrounds */
+    --background: 0 0% 100%;
+    --surface-1: 240 5% 96%;
+    --surface-2: 240 5% 90%;
+    --surface-3: 240 6% 83%;
+
+    /* Text */
+    --foreground: 240 10% 4%;
+    --muted: 240 5% 90%;
+    --muted-foreground: 240 4% 46%;
+
+    /* Borders */
+    --border: 240 6% 83%;
+    --border-strong: 240 5% 65%;
+
+    /* Accent — electric indigo #6366F1 */
+    --accent: 239 84% 67%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Semantic */
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 240 10% 4%;
+    --danger: 0 91% 59%;
+    --danger-foreground: 0 0% 100%;
+    --info: 221 83% 53%;
+    --info-foreground: 0 0% 100%;
+
+    /* Shape */
+    --radius: 8px;
+  }
+
+  .dark {
+    /* Backgrounds — zinc scale */
+    --background: 240 10% 4%;
+    --surface-1: 240 6% 9%;
+    --surface-2: 240 5% 13%;
+    --surface-3: 240 4% 18%;
+
+    /* Text */
+    --foreground: 0 0% 98%;
+    --muted: 240 5% 13%;
+    --muted-foreground: 240 5% 55%;
+
+    /* Borders */
+    --border: 240 5% 17%;
+    --border-strong: 240 4% 26%;
+
+    /* Accent — same across themes */
+    --accent: 239 84% 67%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Semantic — same hue, let the dark background provide contrast */
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 240 10% 4%;
+    --danger: 0 91% 59%;
+    --danger-foreground: 0 0% 100%;
+    --info: 221 83% 53%;
+    --info-foreground: 0 0% 100%;
+  }
+}
+
+/* ── Base resets ────────────────────────────────────────────────────────────── */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
+  }
+
+  /* Heading tracking */
+  h1 {
+    letter-spacing: -0.02em;
+  }
+  h2,
+  h3 {
+    letter-spacing: -0.015em;
+  }
+
+  /* Mono for numbers and IDs */
+  [data-mono] {
+    font-family: var(--font-jetbrains-mono), monospace;
+    font-feature-settings: 'tnum' 1;
+  }
+}
+
+/* ── Utilities ──────────────────────────────────────────────────────────────── */
+@layer utilities {
+  /* Skeleton shimmer overlay */
+  .skeleton-shimmer {
+    @apply relative overflow-hidden bg-surface-2;
+  }
+  .skeleton-shimmer::after {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(90deg, transparent 0%, hsl(var(--surface-3)) 50%, transparent 100%);
+    transform: translateX(-100%);
+    animation: shimmer 1.8s infinite;
+  }
+
+  /* Focus ring helper */
+  .focus-ring {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+}
