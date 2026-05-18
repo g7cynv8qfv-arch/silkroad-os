@@ -304,6 +304,69 @@
       "high": "Risque élevé"
     }
   },
+  "orders": {
+    "list": {
+      "title": "Commandes",
+      "description": "Suivez et gérez vos commandes d'achat du devis à la livraison.",
+      "newOrder": "Nouvelle commande",
+      "empty": {
+        "title": "Aucune commande pour l'instant",
+        "description": "Créez votre première commande pour commencer à suivre le pipeline d'approvisionnement.",
+        "cta": "Nouvelle commande"
+      },
+      "emptyFiltered": {
+        "title": "Aucune commande ne correspond à vos filtres",
+        "description": "Essayez d'ajuster ou d'effacer vos filtres."
+      }
+    },
+    "detail": {
+      "items": { "title": "Articles" },
+      "finance": { "title": "Finances" },
+      "timeline": { "title": "Pipeline" },
+      "shipment": {
+        "title": "Expédition",
+        "add": "Ajouter une expédition",
+        "edit": "Modifier l'expédition"
+      },
+      "qc": {
+        "title": "Contrôle qualité",
+        "add": "Ajouter un rapport QC"
+      }
+    },
+    "form": {
+      "create": { "title": "Nouvelle commande" },
+      "steps": {
+        "1": "Fournisseur",
+        "2": "Articles",
+        "3": "Conditions",
+        "4": "Révision"
+      },
+      "success": { "created": "Commande créée avec succès" },
+      "errors": { "generic": "Une erreur est survenue. Veuillez réessayer." }
+    },
+    "qc": {
+      "title": "Rapport QC"
+    },
+    "shipment": {
+      "addTitle": "Ajouter une expédition",
+      "editTitle": "Modifier l'expédition"
+    },
+    "status": {
+      "QUOTED": "Devis",
+      "CONFIRMED": "Confirmée",
+      "IN_PRODUCTION": "En production",
+      "QC": "QC",
+      "SHIPPED": "Expédiée",
+      "DELIVERED": "Livrée",
+      "CANCELLED": "Annulée"
+    },
+    "shipmentMode": {
+      "AIR": "Aérien",
+      "SEA": "Maritime",
+      "RAIL": "Ferroviaire",
+      "ROAD": "Routier"
+    }
+  },
   "shell": {
     "nav": {
       "dashboard": "Tableau de bord",

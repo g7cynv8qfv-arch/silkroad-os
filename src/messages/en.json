@@ -304,6 +304,69 @@
       "high": "High risk"
     }
   },
+  "orders": {
+    "list": {
+      "title": "Orders",
+      "description": "Track and manage your purchase orders from quote to delivery.",
+      "newOrder": "New order",
+      "empty": {
+        "title": "No orders yet",
+        "description": "Create your first order to start tracking the sourcing pipeline.",
+        "cta": "New order"
+      },
+      "emptyFiltered": {
+        "title": "No orders match your filters",
+        "description": "Try adjusting or clearing your filters."
+      }
+    },
+    "detail": {
+      "items": { "title": "Items" },
+      "finance": { "title": "Financials" },
+      "timeline": { "title": "Pipeline" },
+      "shipment": {
+        "title": "Shipment",
+        "add": "Add shipment",
+        "edit": "Edit shipment"
+      },
+      "qc": {
+        "title": "Quality control",
+        "add": "Add QC report"
+      }
+    },
+    "form": {
+      "create": { "title": "New order" },
+      "steps": {
+        "1": "Supplier",
+        "2": "Items",
+        "3": "Terms",
+        "4": "Review"
+      },
+      "success": { "created": "Order created successfully" },
+      "errors": { "generic": "Something went wrong. Please try again." }
+    },
+    "qc": {
+      "title": "QC Report"
+    },
+    "shipment": {
+      "addTitle": "Add shipment",
+      "editTitle": "Edit shipment"
+    },
+    "status": {
+      "QUOTED": "Quoted",
+      "CONFIRMED": "Confirmed",
+      "IN_PRODUCTION": "In production",
+      "QC": "QC",
+      "SHIPPED": "Shipped",
+      "DELIVERED": "Delivered",
+      "CANCELLED": "Cancelled"
+    },
+    "shipmentMode": {
+      "AIR": "Air",
+      "SEA": "Sea",
+      "RAIL": "Rail",
+      "ROAD": "Road"
+    }
+  },
   "shell": {
     "nav": {
       "dashboard": "Dashboard",
