@@ -367,6 +367,58 @@
       "ROAD": "Road"
     }
   },
+  "invoices": {
+    "list": {
+      "title": "Invoices",
+      "description": "Manage your invoices and track outstanding payments.",
+      "newInvoice": "New invoice",
+      "tabs": {
+        "invoices": "Invoices",
+        "finance": "Finance"
+      },
+      "empty": {
+        "title": "No invoices yet",
+        "description": "Create your first invoice to start tracking your revenue.",
+        "cta": "New invoice"
+      },
+      "emptyFiltered": {
+        "title": "No invoices match your filters",
+        "description": "Try adjusting or clearing your filters."
+      }
+    },
+    "form": {
+      "create": { "title": "New invoice" },
+      "edit": { "title": "Edit invoice" }
+    },
+    "status": {
+      "DRAFT": "Draft",
+      "SENT": "Sent",
+      "PAID": "Paid",
+      "OVERDUE": "Overdue",
+      "CANCELLED": "Cancelled"
+    },
+    "type": {
+      "PROFORMA": "Proforma",
+      "COMMERCIAL": "Commercial",
+      "CREDIT_NOTE": "Credit note"
+    }
+  },
+  "clients": {
+    "list": {
+      "title": "Clients",
+      "description": "Manage your billing clients and their invoice history.",
+      "newClient": "New client",
+      "empty": {
+        "title": "No clients yet",
+        "description": "Add your first client to start creating invoices.",
+        "cta": "Add client"
+      }
+    },
+    "form": {
+      "create": { "title": "New client" },
+      "edit": { "title": "Edit client" }
+    }
+  },
   "shell": {
     "nav": {
       "dashboard": "Dashboard",
@@ -374,6 +426,7 @@
       "intelligence": "AI Intelligence",
       "orders": "Orders",
       "invoices": "Invoices",
+      "clients": "Clients",
       "analytics": "Analytics",
       "settings": "Settings",
       "help": "Help"
@@ -409,6 +462,7 @@
       "intelligence": "AI Intelligence",
       "orders": "Orders",
       "invoices": "Invoices",
+      "clients": "Clients",
       "analytics": "Analytics",
       "settings": "Settings",
       "new": "New",

@@ -93,6 +93,42 @@ export function orgDb(organizationId: string) {
           return query(args);
         },
       },
+      client: {
+        async findMany({ args, query }) {
+          args.where = { ...args.where, organizationId };
+          return query(args);
+        },
+        async findFirst({ args, query }) {
+          args.where = { ...args.where, organizationId };
+          return query(args);
+        },
+        async count({ args, query }) {
+          args.where = { ...args.where, organizationId };
+          return query(args);
+        },
+        async deleteMany({ args, query }) {
+          args.where = { ...args.where, organizationId };
+          return query(args);
+        },
+      },
+      payment: {
+        async findMany({ args, query }) {
+          args.where = { ...args.where, organizationId };
+          return query(args);
+        },
+        async findFirst({ args, query }) {
+          args.where = { ...args.where, organizationId };
+          return query(args);
+        },
+        async count({ args, query }) {
+          args.where = { ...args.where, organizationId };
+          return query(args);
+        },
+        async deleteMany({ args, query }) {
+          args.where = { ...args.where, organizationId };
+          return query(args);
+        },
+      },
     },
   });
 }

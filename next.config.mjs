@@ -12,6 +12,7 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: false,
   },
+  serverExternalPackages: ['@react-pdf/renderer'],
 };
 
 export default withSentryConfig(withNextIntl(nextConfig), {

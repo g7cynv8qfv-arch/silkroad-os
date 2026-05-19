@@ -24,7 +24,12 @@
       "Bash(pnpm db:generate)",
       "Bash(DATABASE_URL=\"postgresql://neondb_owner:npg_IZHVF5Xsc3BL@ep-cool-band-alo1n306.c-3.eu-central-1.aws.neon.tech/neondb?sslmode=require\" pnpm prisma migrate dev --name init)",
       "Bash(DATABASE_URL=\"postgresql://neondb_owner:npg_IZHVF5Xsc3BL@ep-cool-band-alo1n306.c-3.eu-central-1.aws.neon.tech/neondb?sslmode=require\" pnpm db:seed)",
-      "Bash(DATABASE_URL=\"postgresql://neondb_owner:npg_IZHVF5Xsc3BL@ep-cool-band-alo1n306.c-3.eu-central-1.aws.neon.tech/neondb?sslmode=require\" node --input-type=module)"
+      "Bash(DATABASE_URL=\"postgresql://neondb_owner:npg_IZHVF5Xsc3BL@ep-cool-band-alo1n306.c-3.eu-central-1.aws.neon.tech/neondb?sslmode=require\" node --input-type=module)",
+      "Bash(pnpm db:migrate *)",
+      "Bash(python3 *)",
+      "Bash(pnpm tsc *)",
+      "Bash(pnpm build *)",
+      "Bash(pnpm eslint *)"
     ]
   }
 }

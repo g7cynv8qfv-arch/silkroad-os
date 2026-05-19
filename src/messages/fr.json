@@ -367,6 +367,58 @@
       "ROAD": "Routier"
     }
   },
+  "invoices": {
+    "list": {
+      "title": "Factures",
+      "description": "Gérez vos factures et suivez les paiements en attente.",
+      "newInvoice": "Nouvelle facture",
+      "tabs": {
+        "invoices": "Factures",
+        "finance": "Finance"
+      },
+      "empty": {
+        "title": "Aucune facture pour l'instant",
+        "description": "Créez votre première facture pour commencer à suivre votre chiffre d'affaires.",
+        "cta": "Nouvelle facture"
+      },
+      "emptyFiltered": {
+        "title": "Aucune facture ne correspond à vos filtres",
+        "description": "Essayez d'ajuster ou d'effacer vos filtres."
+      }
+    },
+    "form": {
+      "create": { "title": "Nouvelle facture" },
+      "edit": { "title": "Modifier la facture" }
+    },
+    "status": {
+      "DRAFT": "Brouillon",
+      "SENT": "Envoyée",
+      "PAID": "Payée",
+      "OVERDUE": "En retard",
+      "CANCELLED": "Annulée"
+    },
+    "type": {
+      "PROFORMA": "Proforma",
+      "COMMERCIAL": "Commerciale",
+      "CREDIT_NOTE": "Avoir"
+    }
+  },
+  "clients": {
+    "list": {
+      "title": "Clients",
+      "description": "Gérez vos clients et leur historique de facturation.",
+      "newClient": "Nouveau client",
+      "empty": {
+        "title": "Aucun client pour l'instant",
+        "description": "Ajoutez votre premier client pour commencer à créer des factures.",
+        "cta": "Ajouter un client"
+      }
+    },
+    "form": {
+      "create": { "title": "Nouveau client" },
+      "edit": { "title": "Modifier le client" }
+    }
+  },
   "shell": {
     "nav": {
       "dashboard": "Tableau de bord",
@@ -374,6 +426,7 @@
       "intelligence": "Intelligence IA",
       "orders": "Commandes",
       "invoices": "Factures",
+      "clients": "Clients",
       "analytics": "Analytiques",
       "settings": "Paramètres",
       "help": "Aide"
@@ -409,6 +462,7 @@
       "intelligence": "Intelligence IA",
       "orders": "Commandes",
       "invoices": "Factures",
+      "clients": "Clients",
       "analytics": "Analytiques",
       "settings": "Paramètres",
       "new": "Nouveau",

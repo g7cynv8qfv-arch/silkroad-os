@@ -4,6 +4,7 @@ import {
   Sparkles,
   PackageOpen,
   FileText,
+  Users,
   BarChart2,
   Settings,
   HelpCircle,
@@ -53,6 +54,13 @@ export const PRIMARY_NAV: NavItem[] = [
     icon: FileText,
     labelKey: 'shell.nav.invoices',
     shortcut: 'G V',
+  },
+  {
+    key: 'clients',
+    href: '/clients',
+    icon: Users,
+    labelKey: 'shell.nav.clients',
+    shortcut: 'G C',
   },
   {
     key: 'analytics',

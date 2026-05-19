@@ -404,9 +404,13 @@ model Invoice {
   taxCents       Int           @default(0)
   totalCents     Int           @default(0)
   paidCents      Int           @default(0)
-  pdfUrl         String?
-  createdAt      DateTime      @default(now())
-  updatedAt      DateTime      @updatedAt
+  taxRateBps       Int           @default(0)
+  paymentTermsDays Int?
+  notes            String?
+  sentAt           DateTime?
+  pdfUrl           String?
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
 
   items    InvoiceItem[]
   payments Payment[]
