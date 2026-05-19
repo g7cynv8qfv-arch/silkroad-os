@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { CountryFlag } from './country-flag';
 import { RatingStars } from './rating-stars';
 import { RiskBadge } from './risk-badge';
+import { DeleteSupplierButton } from './delete-supplier-button';
 import { Link } from '@/lib/i18n/navigation';
 import { Pencil, Globe, ShoppingBag, Store } from 'lucide-react';
 import type { SupplierWithRelations } from '../types';
@@ -91,6 +92,7 @@ export function SupplierHero({ supplier }: SupplierHeroProps) {
               Edit
             </Button>
           </Link>
+          <DeleteSupplierButton supplierId={supplier.id} supplierName={supplier.name} />
         </div>
       </div>
 

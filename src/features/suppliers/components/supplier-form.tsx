@@ -427,7 +427,7 @@ export function SupplierForm(props: SupplierFormProps) {
   const isLastStep = isEdit || step === STEPS.length - 1;
 
   return (
-    <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
+    <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
       {!isEdit && (
         <div className="space-y-2">
           <div className="flex items-center justify-between">
@@ -470,7 +470,7 @@ export function SupplierForm(props: SupplierFormProps) {
         </Button>
 
         {isLastStep ? (
-          <Button type="submit" loading={isSubmitting}>
+          <Button type="button" loading={isSubmitting} onClick={form.handleSubmit(handleSubmit)}>
             {isSubmitting ? t('actions.saving') : t('actions.save')}
           </Button>
         ) : (

@@ -1,4 +1,6 @@
+import { cache } from 'react';
 import { auth, currentUser } from '@clerk/nextjs/server';
+import { db } from '@/lib/db';
 
 export { auth, currentUser };
 
@@ -99,22 +101,84 @@ export interface OrgSession {
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 /**
- * Returns the current org session. Throws if user is unauthenticated or has no active org.
- * Every server action and server component in (dashboard) must call this.
+ * Returns the current org session with LOCAL database IDs (not Clerk IDs).
+ * Upserts User / Organization / Membership rows on first encounter so the app
+ * works even before Clerk webhooks have fired.
+ * Wrapped in React cache() so the DB round-trips happen at most once per request.
  */
-export async function getCurrentOrg(): Promise<OrgSession> {
-  // Dev bypass: allow the app shell to render without Clerk configured
+export const getCurrentOrg = cache(async (): Promise<OrgSession> => {
+  // Dev bypass: allow the app shell to run without Clerk configured.
+  // We still upsert real DB rows so foreign key constraints are satisfied.
   if (!process.env['NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY']) {
-    return { userId: 'dev-user', orgId: 'dev-org', role: 'OWNER' };
+    const devOrg = await db.organization.upsert({
+      where: { clerkOrgId: 'dev-org' },
+      create: { clerkOrgId: 'dev-org', name: 'Dev Organization', slug: 'dev-org' },
+      update: {},
+    });
+    const devUser = await db.user.upsert({
+      where: { clerkUserId: 'dev-user' },
+      create: { clerkUserId: 'dev-user', email: 'dev@localhost' },
+      update: {},
+    });
+    await db.membership.upsert({
+      where: { userId_organizationId: { userId: devUser.id, organizationId: devOrg.id } },
+      create: { userId: devUser.id, organizationId: devOrg.id, role: 'OWNER' },
+      update: {},
+    });
+    return { userId: devUser.id, orgId: devOrg.id, role: 'OWNER' };
   }
 
-  const { userId, orgId, orgRole } = await auth();
+  const { userId: clerkUserId, orgId: clerkOrgId, orgRole } = await auth();
 
-  if (!userId) throw new Error('Unauthorized: not authenticated.');
-  if (!orgId) throw new Error('Unauthorized: no active organization. Complete onboarding first.');
+  if (!clerkUserId) throw new Error('Unauthorized: not authenticated.');
+  if (!clerkOrgId)
+    throw new Error('Unauthorized: no active organization. Complete onboarding first.');
 
-  return { userId, orgId, role: parseClerkRole(orgRole) };
-}
+  // ── User ──────────────────────────────────────────────────────────────────
+  // Fast path: row already exists (common case after first sign-in)
+  let localUser = await db.user.findUnique({ where: { clerkUserId } });
+  if (!localUser) {
+    const clerkUser = await currentUser();
+    if (!clerkUser) throw new Error('Unauthorized: could not resolve user profile.');
+    const email = clerkUser.emailAddresses.find(
+      (e) => e.id === clerkUser.primaryEmailAddressId,
+    )?.emailAddress;
+    if (!email) throw new Error('Unauthorized: user has no primary email.');
+    localUser = await db.user.upsert({
+      where: { clerkUserId },
+      create: {
+        clerkUserId,
+        email,
+        firstName: clerkUser.firstName,
+        lastName: clerkUser.lastName,
+        avatarUrl: clerkUser.imageUrl,
+      },
+      update: {
+        firstName: clerkUser.firstName,
+        lastName: clerkUser.lastName,
+        avatarUrl: clerkUser.imageUrl,
+      },
+    });
+  }
+
+  // ── Organization ──────────────────────────────────────────────────────────
+  // Slug uses clerkOrgId as a unique placeholder; webhook will set the real name/slug.
+  const localOrg = await db.organization.upsert({
+    where: { clerkOrgId },
+    create: { clerkOrgId, name: clerkOrgId, slug: clerkOrgId },
+    update: {},
+  });
+
+  // ── Membership ────────────────────────────────────────────────────────────
+  const role = parseClerkRole(orgRole);
+  await db.membership.upsert({
+    where: { userId_organizationId: { userId: localUser.id, organizationId: localOrg.id } },
+    create: { userId: localUser.id, organizationId: localOrg.id, role },
+    update: { role },
+  });
+
+  return { userId: localUser.id, orgId: localOrg.id, role };
+});
 
 /**
  * Enforces a minimum role. Throws 403 if the caller's role is below `minRole`.
