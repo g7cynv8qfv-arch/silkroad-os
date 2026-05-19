@@ -26,8 +26,17 @@ if (process.env['NODE_ENV'] !== 'production') {
  *   const { orgId } = await getCurrentOrg();
  *   const client = orgDb(orgId);
  *   const suppliers = await client.supplier.findMany();
+ *
+ * Throws if a Clerk org ID (starts with "org_") is passed — callers must
+ * use the LOCAL database ID returned by getCurrentOrg(), never the raw
+ * Clerk ID from auth().
  */
 export function orgDb(organizationId: string) {
+  if (organizationId.startsWith('org_')) {
+    throw new Error(
+      `orgDb received a Clerk org ID ("${organizationId}"). Pass the local database ID from getCurrentOrg() instead.`,
+    );
+  }
   return db.$extends({
     query: {
       supplier: {
