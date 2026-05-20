@@ -419,6 +419,65 @@
       "edit": { "title": "Modifier le client" }
     }
   },
+  "dashboard": {
+    "title": "Tableau de bord",
+    "subtitle": "Vos opérations de sourcing en un coup d'œil.",
+    "stats": {
+      "revenue": {
+        "label": "Chiffre d'affaires ce mois",
+        "deltaLabel": "vs mois dernier"
+      },
+      "activeOrders": {
+        "label": "Commandes actives",
+        "deltaLabel": "en cours",
+        "breakdown": "Répartition par statut"
+      },
+      "supplierRisk": {
+        "label": "Risque fournisseur moyen",
+        "deltaLabel": "sur {count} fournisseurs actifs",
+        "noData": "—"
+      },
+      "margin": {
+        "label": "Marge %",
+        "deltaLabel": "sur {count} commandes livrées",
+        "noData": "—"
+      }
+    },
+    "orderStatus": {
+      "QUOTED": "Devis",
+      "CONFIRMED": "Confirmée",
+      "IN_PRODUCTION": "En production",
+      "QC": "CQ",
+      "SHIPPED": "Expédiée"
+    },
+    "charts": {
+      "pipeline": {
+        "title": "Pipeline de commandes",
+        "subtitle": "Nouvelles commandes par statut — 12 dernières semaines"
+      },
+      "topSuppliers": {
+        "title": "Top 5 fournisseurs par volume",
+        "subtitle": "Valeur totale des commandes, cliquez pour ouvrir"
+      }
+    },
+    "activity": {
+      "title": "Activité récente",
+      "empty": "Aucune activité enregistrée pour l'instant."
+    },
+    "aiInsights": {
+      "title": "Insights IA",
+      "badge": "IA",
+      "disclaimer": "Les insights sont générés depuis vos données et actualisés toutes les heures."
+    },
+    "empty": {
+      "title": "Bienvenue sur SilkRoute OS",
+      "description": "Tout est prêt. Ajoutez votre premier fournisseur ou importez vos données pour commencer.",
+      "ctaAddSupplier": "Ajouter un fournisseur",
+      "ctaImportExcel": "Importer depuis Excel",
+      "ctaWatchDemo": "Voir la démo 2 min",
+      "hint": "Aucune carte bancaire requise pour le plan gratuit."
+    }
+  },
   "shell": {
     "nav": {
       "dashboard": "Tableau de bord",

@@ -34,6 +34,13 @@ const hasClerkKey = !!process.env['NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY'];
 
 const clerkHandler = hasClerkKey
   ? clerkMiddleware(async (auth, request: NextRequest) => {
+      // API routes must not go through next-intl locale detection — it would
+      // redirect /api/… to /fr/api/… which doesn't exist. Clerk auth context
+      // is still set up by clerkMiddleware before this return.
+      if (request.nextUrl.pathname.startsWith('/api/')) {
+        return NextResponse.next();
+      }
+
       const { userId, orgId, redirectToSignIn } = await auth();
       const prefix = localePrefix(request);
 
@@ -57,6 +64,10 @@ const clerkHandler = hasClerkKey
 export function middleware(request: NextRequest) {
   if (clerkHandler) {
     return clerkHandler(request, {} as never);
+  }
+  // Without Clerk: API routes bypass next-intl to prevent /api/… → /fr/api/… redirect.
+  if (request.nextUrl.pathname.startsWith('/api/')) {
+    return NextResponse.next();
   }
   return handleI18n(request);
 }

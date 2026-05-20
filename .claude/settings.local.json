@@ -29,7 +29,9 @@
       "Bash(python3 *)",
       "Bash(pnpm tsc *)",
       "Bash(pnpm build *)",
-      "Bash(pnpm eslint *)"
+      "Bash(pnpm eslint *)",
+      "Bash(npx tsc *)",
+      "Bash(npx next *)"
     ]
   }
 }

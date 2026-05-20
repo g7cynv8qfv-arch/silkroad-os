@@ -419,6 +419,65 @@
       "edit": { "title": "Edit client" }
     }
   },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Your sourcing operations at a glance.",
+    "stats": {
+      "revenue": {
+        "label": "Revenue this month",
+        "deltaLabel": "vs last month"
+      },
+      "activeOrders": {
+        "label": "Active orders",
+        "deltaLabel": "in pipeline",
+        "breakdown": "Order status breakdown"
+      },
+      "supplierRisk": {
+        "label": "Avg supplier risk",
+        "deltaLabel": "across {count} active suppliers",
+        "noData": "—"
+      },
+      "margin": {
+        "label": "Margin %",
+        "deltaLabel": "across {count} delivered orders",
+        "noData": "—"
+      }
+    },
+    "orderStatus": {
+      "QUOTED": "Quoted",
+      "CONFIRMED": "Confirmed",
+      "IN_PRODUCTION": "In production",
+      "QC": "QC",
+      "SHIPPED": "Shipped"
+    },
+    "charts": {
+      "pipeline": {
+        "title": "Orders pipeline",
+        "subtitle": "New orders by status — last 12 weeks"
+      },
+      "topSuppliers": {
+        "title": "Top 5 suppliers by volume",
+        "subtitle": "Total order value, click to open supplier"
+      }
+    },
+    "activity": {
+      "title": "Recent activity",
+      "empty": "No activity recorded yet."
+    },
+    "aiInsights": {
+      "title": "AI Insights",
+      "badge": "AI",
+      "disclaimer": "Insights are generated from your data and refreshed hourly."
+    },
+    "empty": {
+      "title": "Welcome to SilkRoute OS",
+      "description": "You're all set up. Add your first supplier or import your existing data to get started.",
+      "ctaAddSupplier": "Add your first supplier",
+      "ctaImportExcel": "Import from Excel",
+      "ctaWatchDemo": "Watch 2-min demo",
+      "hint": "No credit card required for the free tier."
+    }
+  },
   "shell": {
     "nav": {
       "dashboard": "Dashboard",
