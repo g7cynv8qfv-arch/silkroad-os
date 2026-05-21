@@ -3,6 +3,15 @@
     "name": "SilkRoute OS",
     "tagline": "Votre système d'exploitation d'approvisionnement IA"
   },
+  "landing": {
+    "signUp": "Créer un compte",
+    "signIn": "Se connecter",
+    "badge": "Nouveau",
+    "badgeText": "Propulsé par l'IA",
+    "headline": "L'OS du commerce international.",
+    "subline": "Sourcing IA, gestion fournisseurs et logistique — dans un seul espace de travail.",
+    "footer": "Sans carte bancaire · Essai gratuit"
+  },
   "auth": {
     "signIn": {
       "title": "Bienvenue",

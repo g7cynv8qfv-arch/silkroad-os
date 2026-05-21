@@ -1,8 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { useOrganizationList } from '@clerk/nextjs';
-import { useRouter } from 'next/navigation';
+import { useOrganization, useOrganizationList } from '@clerk/nextjs';
 import { useTranslations, useLocale } from 'next-intl';
 import { Building2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -18,18 +17,25 @@ import {
 } from '@/components/ui/card';
 
 export default function OnboardingPage() {
-  const { createOrganization, setActive } = useOrganizationList();
-  const router = useRouter();
+  const { createOrganization, setActive, isLoaded } = useOrganizationList();
+  const { organization } = useOrganization();
   const locale = useLocale();
   const t = useTranslations('auth.onboarding');
 
   const [orgName, setOrgName] = React.useState('');
   const [error, setError] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState(false);
+  const [submitted, setSubmitted] = React.useState(false);
+
+  React.useEffect(() => {
+    if (submitted && organization) {
+      window.location.assign(`/${locale}/dashboard`);
+    }
+  }, [submitted, organization, locale]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!createOrganization) return;
+    if (!isLoaded || !createOrganization || !setActive) return;
 
     setError(null);
     setLoading(true);
@@ -37,12 +43,21 @@ export default function OnboardingPage() {
     try {
       const org = await createOrganization({ name: orgName.trim() });
       await setActive({ organization: org.id });
-      router.push(`/${locale}/dashboard`);
+      setSubmitted(true);
     } catch {
       setError(t('errors.generic'));
-    } finally {
       setLoading(false);
     }
+  }
+
+  if (!isLoaded) {
+    return (
+      <Card className="w-full max-w-sm">
+        <CardContent className="flex items-center justify-center py-12">
+          <div className="h-6 w-6 animate-spin rounded-full border-2 border-accent border-t-transparent" />
+        </CardContent>
+      </Card>
+    );
   }
 
   return (

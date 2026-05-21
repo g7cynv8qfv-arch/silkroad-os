@@ -11,7 +11,6 @@ const isDashboardRoute = createRouteMatcher([
   '/:locale/suppliers(.*)',
   '/:locale/orders(.*)',
   '/:locale/invoices(.*)',
-  '/:locale/invoices(.*)',
   '/:locale/intelligence(.*)',
   '/:locale/analytics(.*)',
 ]);
@@ -19,6 +18,8 @@ const isDashboardRoute = createRouteMatcher([
 const isAuthRoute = createRouteMatcher(['/:locale/sign-in(.*)', '/:locale/sign-up(.*)']);
 
 const isOnboardingRoute = createRouteMatcher(['/:locale/onboarding(.*)']);
+
+const isHomeRoute = createRouteMatcher(['/:locale']);
 
 function localePrefix(request: NextRequest): string {
   const segments = request.nextUrl.pathname.split('/').filter(Boolean);
@@ -41,15 +42,32 @@ const clerkHandler = hasClerkKey
         return NextResponse.next();
       }
 
-      const { userId, orgId, redirectToSignIn } = await auth();
+      const rawAuth = await auth();
+      const { userId, redirectToSignIn } = rawAuth;
+      // @clerk/backend 1.14.1 only reads the flat org_id claim; v2 compact JWTs
+      // store the org under sessionClaims.o.id — fall back to that field.
+      // sessionClaims is null for unauthenticated requests, so guard with ??.
+      const compactClaims = (rawAuth.sessionClaims ?? {}) as Record<string, unknown> & {
+        o?: { id?: string };
+      };
+      const orgId = rawAuth.orgId ?? compactClaims.o?.id;
       const prefix = localePrefix(request);
 
       if (isDashboardRoute(request)) {
         if (!userId) return redirectToSignIn({ returnBackUrl: request.url });
-        if (!orgId) return NextResponse.redirect(new URL(`${prefix}/onboarding`, request.url));
+        // Note: orgId check is intentionally in the dashboard layout, NOT here.
+        // Checking !orgId here would redirect before Clerk can complete its
+        // JWT handshake (which exchanges __clerk_db_jwt for a fresh __session
+        // including the new orgId after setActive). The layout guards instead.
       }
 
-      if (isAuthRoute(request) && userId && orgId) {
+      // Signed-in user without org visiting home or auth pages → send to onboarding
+      if (userId && !orgId && (isHomeRoute(request) || isAuthRoute(request))) {
+        return NextResponse.redirect(new URL(`${prefix}/onboarding`, request.url));
+      }
+
+      // Fully authenticated user visiting auth or home pages → send to dashboard
+      if (userId && orgId && (isHomeRoute(request) || isAuthRoute(request))) {
         return NextResponse.redirect(new URL(`${prefix}/dashboard`, request.url));
       }
 

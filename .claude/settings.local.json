@@ -31,7 +31,21 @@
       "Bash(pnpm build *)",
       "Bash(pnpm eslint *)",
       "Bash(npx tsc *)",
-      "Bash(npx next *)"
+      "Bash(npx next *)",
+      "Bash(pnpm playwright *)",
+      "Bash(pnpm dev *)",
+      "Bash(echo \"DEV_PID=$!\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/fr)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\" http://localhost:3000/fr)",
+      "Bash(PLAYWRIGHT_BASE_URL=http://localhost:3000 pnpm playwright *)",
+      "Bash(curl *)",
+      "Bash(xxd /Users/r.d/Documents/SilkRoad-OS/.env.local)",
+      "Bash(unzip -o \"test-results/signup-full-signup-→-onboarding-→-dashboard-run-1--chromium/trace.zip\" -d /tmp/playwright-trace/)",
+      "Bash(unzip -o \"test-results/signup-full-signup-→-onboarding-→-dashboard-run-1--chromium/trace.zip\" -d /tmp/playwright-trace2/)",
+      "Bash(unzip -o \"test-results/signup-full-signup-→-onboarding-→-dashboard-run-1--chromium/trace.zip\" -d /tmp/playwright-trace3/)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(nohup pnpm dev)",
+      "Bash(echo \"Started PID $!\")"
     ]
   }
 }

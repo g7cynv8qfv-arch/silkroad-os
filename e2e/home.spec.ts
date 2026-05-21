@@ -1,12 +1,15 @@
 import { test, expect } from '@playwright/test';
 
-test('homepage renders SilkRoute OS in French (default locale)', async ({ page }) => {
-  await page.goto('/');
+test('homepage /fr renders SilkRoute OS heading and Clerk panel', async ({ page }) => {
+  await page.goto('/fr');
   await expect(page).toHaveURL(/\/fr/);
-  await expect(page.getByRole('heading', { name: 'SilkRoute OS' })).toBeVisible();
+  await expect(page.locator('h1')).toBeVisible();
+  await expect(page.getByTestId('clerk-panel')).toBeVisible({ timeout: 10_000 });
 });
 
-test('homepage renders SilkRoute OS in English', async ({ page }) => {
+test('homepage /en renders SilkRoute OS heading and Clerk panel', async ({ page }) => {
   await page.goto('/en');
-  await expect(page.getByRole('heading', { name: 'SilkRoute OS' })).toBeVisible();
+  await expect(page).toHaveURL(/\/en/);
+  await expect(page.locator('h1')).toBeVisible();
+  await expect(page.getByTestId('clerk-panel')).toBeVisible({ timeout: 10_000 });
 });

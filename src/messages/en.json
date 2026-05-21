@@ -3,6 +3,15 @@
     "name": "SilkRoute OS",
     "tagline": "Your AI-powered sourcing operating system"
   },
+  "landing": {
+    "signUp": "Get started",
+    "signIn": "Sign in",
+    "badge": "New",
+    "badgeText": "AI-powered",
+    "headline": "The OS for global trade.",
+    "subline": "AI-powered sourcing, supplier management, and logistics — all in one workspace.",
+    "footer": "No credit card required · Free trial"
+  },
   "auth": {
     "signIn": {
       "title": "Welcome back",

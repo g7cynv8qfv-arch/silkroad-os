@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { useSignUp } from '@clerk/nextjs';
-import { useRouter } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -20,7 +19,6 @@ type Step = 'register' | 'verify';
 
 export default function SignUpPage() {
   const { isLoaded, signUp, setActive } = useSignUp();
-  const router = useRouter();
   const locale = useLocale();
   const t = useTranslations('auth.signUp');
 
@@ -71,7 +69,8 @@ export default function SignUpPage() {
 
       if (result.status === 'complete') {
         await setActive({ session: result.createdSessionId });
-        router.push(`/${locale}/onboarding`);
+        // Hard navigate so the server receives the refreshed Clerk session cookie
+        window.location.assign(`/${locale}/onboarding`);
       }
     } catch (err: unknown) {
       const clerkError = err as { errors?: Array<{ code?: string }> };
@@ -96,7 +95,7 @@ export default function SignUpPage() {
       <Card className="w-full max-w-sm">
         <CardHeader>
           <CardTitle>{t('verifyTitle')}</CardTitle>
-          <CardDescription>{t('verifySubtitle').replace('{email}', email)}</CardDescription>
+          <CardDescription>{t('verifySubtitle', { email })}</CardDescription>
         </CardHeader>
         <form onSubmit={handleVerify}>
           <CardContent className="space-y-4">

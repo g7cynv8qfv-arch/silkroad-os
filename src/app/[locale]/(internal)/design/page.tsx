@@ -22,9 +22,8 @@ import { StatCard } from '@/components/ui/stat-card';
 import { ThemeToggle } from '@/components/shell/theme-toggle';
 import { DesignInteractives } from './design-interactives';
 
-if (process.env['NODE_ENV'] !== 'development') notFound();
-
 export default function DesignPage() {
+  if (process.env['NODE_ENV'] !== 'development') notFound();
   return (
     <div className="min-h-screen bg-background font-sans">
       {/* Sticky header */}
