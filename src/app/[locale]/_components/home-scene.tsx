@@ -110,13 +110,18 @@ export function HomeScene({ locale }: HomeSceneProps) {
                     fontFamily: 'var(--font-inter, system-ui, sans-serif)',
                   },
                   elements: {
+                    rootBox: { width: '100%', minWidth: 'unset' },
+                    cardBox: { width: '100%', minWidth: 'unset' },
                     card: {
                       boxShadow: 'none',
                       background: 'transparent',
                       border: 'none',
                       borderRadius: 0,
+                      padding: '1.25rem',
+                      width: '100%',
+                      minWidth: 'unset',
+                      boxSizing: 'border-box',
                     },
-                    rootBox: { width: '100%' },
                     headerTitle: { color: '#f4f4f5' },
                     headerSubtitle: { color: '#a1a1aa' },
                     dividerLine: { backgroundColor: 'rgba(255,255,255,0.08)' },
@@ -154,7 +159,7 @@ export function HomeScene({ locale }: HomeSceneProps) {
                   {t('signUp')}
                 </Link>
                 <Link
-                  href={`/${locale}/sign-in`}
+                  href={`/${locale}`}
                   className="flex h-10 items-center justify-center rounded-lg border border-white/10 text-sm font-medium text-zinc-300 transition-colors hover:bg-white/5"
                 >
                   {t('signIn')}
