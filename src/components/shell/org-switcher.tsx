@@ -62,7 +62,7 @@ function OrgSwitcherInner({ collapsed = false }: OrgSwitcherProps) {
 
   async function handleSignOut() {
     await signOut();
-    router.push(`/${locale}/sign-in`);
+    router.push(`/${locale}`);
   }
 
   const trigger = collapsed ? (
@@ -141,7 +141,7 @@ function OrgSwitcherInner({ collapsed = false }: OrgSwitcherProps) {
 
         <DropdownMenuItem onSelect={() => router.push(`/${locale}/onboarding`)} className="gap-2">
           <Plus className="h-4 w-4" />
-          Create organization
+          {t('createOrganization')}
         </DropdownMenuItem>
 
         <DropdownMenuItem
@@ -149,7 +149,7 @@ function OrgSwitcherInner({ collapsed = false }: OrgSwitcherProps) {
           className="gap-2"
         >
           <Settings className="h-4 w-4" />
-          Organization settings
+          {t('organizationSettings')}
         </DropdownMenuItem>
 
         <DropdownMenuSeparator />

@@ -49,7 +49,7 @@ function UserMenuInner() {
 
   async function handleSignOut() {
     await signOut();
-    router.push(`/${locale}/sign-in`);
+    router.push(`/${locale}`);
   }
 
   return (

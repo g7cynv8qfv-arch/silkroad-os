@@ -5,6 +5,7 @@ import { SidebarProvider } from '@/components/shell/sidebar-context';
 import { Sidebar } from '@/components/shell/sidebar';
 import { Topbar } from '@/components/shell/topbar';
 import { ShellCommandPalette } from '@/components/shell/shell-command-palette';
+import { AssistantSheet } from '@/components/shell/assistant-sheet';
 import { ShellMain } from './shell-main';
 
 export default async function DashboardLayout({
@@ -39,6 +40,7 @@ export default async function DashboardLayout({
           <main className="flex-1 px-8 py-6">{children}</main>
         </ShellMain>
         <ShellCommandPalette />
+        <AssistantSheet />
       </div>
     </SidebarProvider>
   );

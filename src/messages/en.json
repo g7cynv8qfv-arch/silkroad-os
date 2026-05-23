@@ -13,23 +13,6 @@
     "footer": "No credit card required · Free trial"
   },
   "auth": {
-    "signIn": {
-      "title": "Welcome back",
-      "subtitle": "Sign in to your account",
-      "emailLabel": "Email address",
-      "emailPlaceholder": "you@company.com",
-      "passwordLabel": "Password",
-      "passwordPlaceholder": "••••••••",
-      "submitButton": "Sign in",
-      "noAccount": "Don't have an account?",
-      "signUpLink": "Create one",
-      "forgotPassword": "Forgot password?",
-      "errors": {
-        "invalidCredentials": "Incorrect email or password.",
-        "tooManyAttempts": "Too many attempts. Please try again later.",
-        "generic": "Something went wrong. Please try again."
-      }
-    },
     "signUp": {
       "title": "Create an account",
       "subtitle": "Start your free trial",
@@ -487,6 +470,27 @@
       "hint": "No credit card required for the free tier."
     }
   },
+  "assistant": {
+    "title": "SilkRoute AI",
+    "subtitle": "Ask anything about your data",
+    "newChat": "New chat",
+    "placeholder": "Ask about suppliers, orders, revenue…",
+    "send": "Send",
+    "empty": {
+      "title": "What do you need to know?",
+      "description": "Ask questions about your suppliers, orders, invoices, and KPIs."
+    },
+    "suggestions": {
+      "riskiestSupplier": "Which supplier is the riskiest?",
+      "revenueThisMonth": "What's my revenue this month?",
+      "lateOrders": "Do I have any late orders?",
+      "recentInvoices": "Show me my recent invoices"
+    },
+    "historyTitle": "History",
+    "noHistory": "No past conversations",
+    "limitReached": "This conversation has reached the 20-message limit. Start a new chat.",
+    "error": "Something went wrong. Please try again."
+  },
   "shell": {
     "nav": {
       "dashboard": "Dashboard",
@@ -522,6 +526,8 @@
     "userMenu": {
       "profile": "Profile",
       "settings": "Settings",
+      "createOrganization": "Create organization",
+      "organizationSettings": "Organization settings",
       "signOut": "Sign out"
     },
     "breadcrumbs": {

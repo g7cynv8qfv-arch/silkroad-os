@@ -189,7 +189,7 @@ export default function SignUpPage() {
           </Button>
           <p className="text-center text-sm text-muted-foreground">
             {t('hasAccount')}{' '}
-            <a href={`/${locale}/sign-in`} className="font-medium text-accent hover:underline">
+            <a href={`/${locale}`} className="font-medium text-accent hover:underline">
               {t('signInLink')}
             </a>
           </p>

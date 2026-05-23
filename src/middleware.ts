@@ -15,7 +15,7 @@ const isDashboardRoute = createRouteMatcher([
   '/:locale/analytics(.*)',
 ]);
 
-const isAuthRoute = createRouteMatcher(['/:locale/sign-in(.*)', '/:locale/sign-up(.*)']);
+const isAuthRoute = createRouteMatcher(['/:locale/sign-up(.*)']);
 
 const isOnboardingRoute = createRouteMatcher(['/:locale/onboarding(.*)']);
 

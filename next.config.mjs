@@ -12,6 +12,15 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: false,
   },
+  async redirects() {
+    return [
+      {
+        source: '/:locale/sign-in',
+        destination: '/:locale',
+        permanent: true,
+      },
+    ];
+  },
   serverExternalPackages: ['@react-pdf/renderer'],
 };
 

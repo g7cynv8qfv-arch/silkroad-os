@@ -13,23 +13,6 @@
     "footer": "Sans carte bancaire · Essai gratuit"
   },
   "auth": {
-    "signIn": {
-      "title": "Bienvenue",
-      "subtitle": "Connectez-vous à votre compte",
-      "emailLabel": "Adresse e-mail",
-      "emailPlaceholder": "vous@entreprise.com",
-      "passwordLabel": "Mot de passe",
-      "passwordPlaceholder": "••••••••",
-      "submitButton": "Se connecter",
-      "noAccount": "Pas encore de compte ?",
-      "signUpLink": "Créer un compte",
-      "forgotPassword": "Mot de passe oublié ?",
-      "errors": {
-        "invalidCredentials": "E-mail ou mot de passe incorrect.",
-        "tooManyAttempts": "Trop de tentatives. Veuillez réessayer plus tard.",
-        "generic": "Une erreur est survenue. Veuillez réessayer."
-      }
-    },
     "signUp": {
       "title": "Créer un compte",
       "subtitle": "Commencez votre essai gratuit",
@@ -487,6 +470,27 @@
       "hint": "Aucune carte bancaire requise pour le plan gratuit."
     }
   },
+  "assistant": {
+    "title": "SilkRoute IA",
+    "subtitle": "Posez n'importe quelle question sur vos données",
+    "newChat": "Nouvelle conversation",
+    "placeholder": "Questions sur fournisseurs, commandes, chiffre d'affaires…",
+    "send": "Envoyer",
+    "empty": {
+      "title": "Que souhaitez-vous savoir ?",
+      "description": "Posez des questions sur vos fournisseurs, commandes, factures et indicateurs."
+    },
+    "suggestions": {
+      "riskiestSupplier": "Quel fournisseur présente le risque le plus élevé ?",
+      "revenueThisMonth": "Quel est mon chiffre d'affaires ce mois-ci ?",
+      "lateOrders": "Ai-je des commandes en retard ?",
+      "recentInvoices": "Montre-moi mes dernières factures"
+    },
+    "historyTitle": "Historique",
+    "noHistory": "Aucune conversation précédente",
+    "limitReached": "Cette conversation a atteint la limite de 20 messages. Démarrez une nouvelle conversation.",
+    "error": "Une erreur est survenue. Veuillez réessayer."
+  },
   "shell": {
     "nav": {
       "dashboard": "Tableau de bord",
@@ -522,6 +526,8 @@
     "userMenu": {
       "profile": "Mon profil",
       "settings": "Paramètres",
+      "createOrganization": "Créer une organisation",
+      "organizationSettings": "Paramètres de l'organisation",
       "signOut": "Se déconnecter"
     },
     "breadcrumbs": {
